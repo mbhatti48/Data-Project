@@ -2,7 +2,7 @@
 
 ## Purpose
 
-I spent three years at IRCC working hands-on with data — running queries in GCMS, extracting and auditing records in Cognos, and producing reports that fed directly into operational decisions. That work, combined with a Data Science Certificate from the University of Waterloo (Python, statistics, machine learning, big data tools), is what's pulling me toward data analyst, data scientist, and data engineer roles.
+I spent three years at the Government of Canada working hands-on with data — running queries in GCMS, extracting and auditing records in Cognos, and producing reports that fed directly into operational decisions. That work, combined with a Data Science Certificate from the University of Waterloo (Python, statistics, machine learning, big data tools), is what's pulling me toward data analyst, data scientist, and data engineer roles.
 
 This repo is where that transition shows up as code: academic coursework projects and self-taught builds covering data cleaning and analysis, statistical modeling and machine learning, and pipeline/engineering work in Python, SQL, and Spark.
 
