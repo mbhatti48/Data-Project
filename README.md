@@ -11,3 +11,4 @@ Each project has its own subfolder with its own README covering the problem, app
 ## Projects
 
 - [`beer-popularity-prediction/`](beer-popularity-prediction/) — Predicting beer popularity from ~9M reviews (1996–2018) using pandas for data cleaning/feature engineering and PySpark/Spark MLlib for modeling. Linear Regression, R² = 0.70. Academic group project, Waterloo Data Science Certificate.
+- [`hospital-readmission-prediction/`](hospital-readmission-prediction/) — Predicting 30-day hospital readmission for diabetic patients from a 10-year, 130-hospital clinical dataset using scikit-learn. Compared 8 classifiers, tuned Random Forest with GridSearchCV. AUC = 0.61, F1 = 0.63. Academic group project, Waterloo Data Science Certificate.
