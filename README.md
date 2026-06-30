@@ -1,6 +1,10 @@
 # Data-Project
 
-A collection of data projects — analysis, modeling, and pipeline work in Python, SQL, and Spark — built while job hunting across data analyst, data scientist, and data engineer roles.
+## Purpose
+
+This repo collects my data projects — academic coursework, self-taught work, and personal builds — in one place. I'm job hunting across data analyst, data scientist, and data engineer roles, so the work here spans the full range: data cleaning and analysis, statistical modeling and machine learning, and pipeline/engineering work in Python, SQL, and Spark.
+
+Each project lives in its own subfolder with its own README explaining the problem, approach, and result.
 
 ## Projects
 
