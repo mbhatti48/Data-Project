@@ -2,7 +2,7 @@
 
 Academic group project — Machine Learning course, Waterloo Data Science Certificate (2023).
 
-**Team (Group 14):** Jamie Bennion, Mohammad Bhatti, Meriem Meghari, Elaheh Nahvi, Jemar Ugale
+**Team (Group 14):** Jamie B., Mohammad Bhatti, Meriem M., Elaheh N., Jemar U.
 
 ## Problem
 

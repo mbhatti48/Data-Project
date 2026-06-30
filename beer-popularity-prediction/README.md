@@ -2,7 +2,7 @@
 
 Academic group project — Big Data Tools & Management course, Waterloo Data Science Certificate (2022).
 
-**Team (Group 14):** Mohammad Ali Bhatti, Arun Arora, Darwin Arriagada, Supratim Das, Mary (Zhong) Xu
+**Team (Group 14):** Mohammad Ali Bhatti, Arun A., Darwin A., Supratim D., Mary X.
 
 ## Problem
 
