@@ -33,7 +33,7 @@ Linear Regression.
 
 - `beer_popularity_prediction.ipynb` — the cleaned-up notebook: EDA, joins, feature engineering, and
   the model training/evaluation section.
-- `Group 14 Report Final.pdf` — the team's original written report (methodology + results write-up).
+- `Beer Popularity Prediction - Project Report.pdf` — the team's original written report (methodology + results write-up).
 
 ## A note on the modeling section
 

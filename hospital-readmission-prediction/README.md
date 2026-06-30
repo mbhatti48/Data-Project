@@ -39,6 +39,7 @@ repo. Both are documented in the README and notebook for context.
 
 - `hospital_readmission_prediction.ipynb` — the merged, cleaned-up notebook: EDA, preprocessing,
   feature encoding, class-imbalance handling, and model training/evaluation.
+- `Hospital Readmission Prediction - Project Report.pdf` — the team's original written report (methodology + results write-up).
 
 ## A note on this notebook's origin
 
