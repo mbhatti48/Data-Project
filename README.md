@@ -10,5 +10,6 @@ Each project has its own subfolder with its own README covering the problem, app
 
 ## Projects
 
+- [`financial-vulnerability-canada/`](financial-vulnerability-canada/) — What separates financially vulnerable Canadian families (those who skipped a payment due to hardship, ~4%) in Statistics Canada's 2023 Survey of Financial Security, and can they be predicted? Hypothesis testing (Welch t-test, chi-square) plus class-weighted Logistic Regression and Random Forest, tuned with GridSearchCV and threshold-adjusted for the rare class. The tuned forest catches 4 of 5 vulnerable families, AUC = 0.83, with a Bank of Canada debt-benchmark epilogue. Self-taught build.
 - [`beer-popularity-prediction/`](beer-popularity-prediction/) — Predicting beer popularity from ~9M reviews (1996–2018) using pandas for data cleaning/feature engineering and PySpark/Spark MLlib for modeling. Linear Regression, R² = 0.70. Academic group project, Waterloo Data Science Certificate.
 - [`hospital-readmission-prediction/`](hospital-readmission-prediction/) — Predicting 30-day hospital readmission for diabetic patients from a 10-year, 130-hospital clinical dataset using scikit-learn. Compared 8 classifiers, tuned Random Forest with GridSearchCV. AUC = 0.61, F1 = 0.63. Academic group project, Waterloo Data Science Certificate.
