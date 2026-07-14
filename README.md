@@ -2,9 +2,9 @@
 
 ## Purpose
 
-I spent three years at the Government of Canada working hands-on with data. I ran queries against internal case-management databases, extracted and audited records in Cognos, and produced reports that fed directly into operational decisions. I also completed a Data Science Certificate from the University of Waterloo, covering Python, statistics, machine learning, and big data tools. I'm now applying to data analyst, data scientist, and data engineer roles.
+I'm a data and analytics professional with 4+ years across the public and private sectors, turning operational data into reporting that drives decisions. At the Government of Canada I worked hands-on with data, running queries against internal case-management databases, extracting and auditing records in Cognos, and producing reports that fed directly into operational decisions. I now handle data and analytics for a growing e-commerce business. I also hold a Data Science Certificate from the University of Waterloo, covering Python, statistics, machine learning, and big data, and I'm applying to data analyst, data scientist, and data engineer roles.
 
-This repo holds my data projects, including academic coursework and self-taught builds. The work covers data cleaning and analysis, statistical modeling and machine learning, and pipeline and engineering work in Python, SQL, and Spark.
+This repo holds my data projects, both academic coursework and self-taught builds. The work spans data cleaning and analysis, statistical modeling and machine learning, and pipeline and engineering work in Python, SQL, and Spark.
 
 Each project has its own subfolder with its own README covering the problem, approach, and result.
 
