@@ -1,70 +1,39 @@
 # Hospital Readmission Prediction (10-Year Diabetes Dataset)
 
-Academic group project — Machine Learning course, Waterloo Data Science Certificate (2023).
+A machine-learning analysis of ~99,000 hospital encounters of ~70,000 diabetic patients from 130 US hospitals (1999–2008). The project asks one question: **can we tell, at the moment of discharge, which patients are most at risk of being back in hospital within 30 days?**
 
-**Team (Group 14):** Jamie B., Mohammad Bhatti, Meriem M., Elaheh N., Jemar U.
+About 11% of discharges lead to a readmission within the 30-day window — the standard hospital-quality benchmark — making this a heavily imbalanced classification problem on real clinical data.
 
-## Problem
+## Key findings
 
-Using 10 years (1999–2008) of clinical data from 130 US hospitals (~100K inpatient encounters,
-50+ features), predict whether a diabetic patient will be readmitted to hospital within 30 days of
-discharge — a binary classification problem on a meaningfully imbalanced target (88.84% not
-readmitted within 30 days).
+- **Readmission risk is driven by a simple story.** Two very different models — a logistic regression read through odds ratios and a gradient-boosted model read through feature importances — independently agree on the drivers: the patient's hospitalization history (the dominant signal in both — recent visits, prior stays on record, and whether the last stay already ended in a readmission), where they were discharged to, their age, and their primary diagnosis. Agreement between two unrelated models is good evidence the signal is real.
+- **Prior hospitalizations dominate.** Encounters with 3+ inpatient stays in the previous year end in readmission 26.4% of the time — three times the rate of first-time patients (8.6%). Discharge destination is the clear second signal: 9.3% for patients sent home vs 16.3% for those sent to another facility.
+- **The evaluation is patient-leakage-free by design.** Thousands of patients appear multiple times in the data; the train/test split and every cross-validation fold are grouped by patient, so no patient is ever both trained and tested on — without discarding the repeat-visit patients a readmission model most needs to learn from.
+- **Readmission is genuinely hard to predict.** The tuned model reaches a **test AUC of 0.67**, close to the practical ceiling for this feature set and in line with published results on this dataset. Used as a screening tool with a recall-oriented threshold, it catches about 3 in 5 readmissions while flagging about 38% of discharges for follow-up.
 
-## Approach
+## What the project covers
 
-- **Preprocessing:** cleaned `?` placeholder values, dropped identifier columns and high-cardinality
-  diagnosis/specialty fields, collapsed the 3-way `readmitted` field into a binary target, dropped
-  hospice/death discharge dispositions (can't meaningfully "readmit"), and encoded the remaining
-  categorical features (one-hot for low-cardinality, ordinal for age, binary encoding via
-  `category_encoders` for high-cardinality admission/discharge/source IDs to control dimensionality).
-- **Class imbalance:** balanced the training set by undersampling the majority class (test set left
-  untouched, so evaluation still reflects real-world class proportions).
-- **Modeling:** compared 8 classifiers (Logistic Regression, LDA, KNN, Random Forest, Naive Bayes,
-  AdaBoost, Gradient Boosting, Extra Trees) at default settings, then tuned Random Forest with
-  `GridSearchCV` over depth, estimator count, max features, and min samples split.
-
-## Result
-
-**Tuned Random Forest: AUC = 0.61, weighted-average F1 = 0.63.** Hospital readmission is a
-genuinely hard prediction problem — this is modestly better than chance, consistent with published
-results on this dataset rather than a sign of a modeling mistake.
-
-The team's official project report compared Logistic Regression, Random Forest, and Gradient
-Boosting after tuning and selected **Gradient Boosting as the team's official pick** (~58.4% test
-accuracy, F1 = 0.614) — close to, though not identical to, the tuned Random Forest result in this
-repo. Both are documented in the README and notebook for context.
-
-## Repo contents
-
-- `hospital_readmission_prediction.ipynb` — the merged, cleaned-up notebook: EDA, preprocessing,
-  feature encoding, class-imbalance handling, and model training/evaluation.
-- `Hospital Readmission Prediction - Project Report.pdf` — the team's original written report (methodology + results write-up).
-
-## A note on this notebook's origin
-
-Two notebooks existed for this project: one with more rigorous, well-documented EDA and feature
-encoding, and one with the actual hyperparameter-tuned model that produced the AUC/F1 result above.
-This repo merges the best of both into a single notebook — the EDA/preprocessing is the more
-thorough version, with the modeling section adapted onto it. The class-imbalance (undersampling)
-step is reconstructed to match the documented approach, since the original notebook's resampling
-code wasn't preserved (see the comment in that cell). Everything else — the encoding decisions, the
-model comparison, the hyperparameter grid — is the team's original work.
+- **Section 2, Cleaning.** Making `?` placeholders visible as real missing data, sizing the repeat-patient leakage trap, removing encounters that can't be readmitted (deaths and hospice discharges), and building the binary 30-day target.
+- **Section 3, Exploration.** The class imbalance, and how readmission rates move with age, prior hospitalizations, and discharge destination.
+- **Section 4, Feature preparation.** Grouping coded ID fields into named categories, mapping 700+ ICD-9 diagnosis codes to nine readable chapters, compressing 23 per-drug columns into four medication features, engineering patient-history features built strictly from each patient's earlier stays, and a preprocessing pipeline that fits its scaler on training folds only.
+- **Section 5, Modeling.** Metric priority stated up front (AUC first, recall at a screening threshold second, accuracy last), a patient-grouped train/test split with patient-grouped CV folds, four candidates compared by cross-validated AUC, the leader tuned by grid search, one evaluation on the held-out test set, and an operating threshold chosen for screening.
+- **Section 6, Interpretation.** Odds ratios versus feature importances — what the two models agree on, and how to read direction from one and ranking from the other.
 
 ## Data
 
 `diabetes.csv` is not included in this repo due to size. Download it from the
 [10 Years Diabetes Dataset on Kaggle](https://www.kaggle.com/datasets/jimschacko/10-years-diabetes-dataset)
-and place it in the repo root before running the notebook.
+and place it next to the notebook. A feature reference is in the notebook's appendix.
 
-## Requirements
+## Running it
 
 ```
-pandas
-numpy
-scikit-learn
-category_encoders
-seaborn
-matplotlib
-tabulate
+pip install -r requirements.txt
+jupyter notebook hospital_readmission_prediction.ipynb
 ```
+
+The notebook runs top to bottom once the data file is in place (a few minutes; the grid search is the slow cell).
+
+## Tools
+
+Python, with pandas and numpy for the data work, matplotlib for visualisation, and scikit-learn for the modelling.

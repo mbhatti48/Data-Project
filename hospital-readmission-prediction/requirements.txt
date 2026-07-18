@@ -1,7 +1,5 @@
 pandas
 numpy
-scikit-learn
-category_encoders
-seaborn
 matplotlib
-tabulate
+scikit-learn
+jupyter
