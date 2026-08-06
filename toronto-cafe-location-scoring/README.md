@@ -56,6 +56,20 @@ Five factors, each normalised to 0 to 100, combined as a weighted average. All w
 
 The model took three calibration rounds. The first version ranked empty suburban bus loops at the top (emptiness was rewarded twice, a formula bug). The second favoured any hexagon holding a single chain cafe (a data gap: no demand signal, fixed by joining the census). The third was validated against ground truth: known cafe districts score high without topping the list, which is correct behaviour since their best corners are already taken. The lesson that generalises: formula bugs are fixed with arithmetic, data gaps are fixed with new sources, and no amount of weight tuning conjures information the data does not contain.
 
+### Grade
+
+Each hexagon also gets a letter grade, computed with `PERCENT_RANK()` over `location_score` rather than a fixed score threshold: a grade shows how a hexagon ranks against every other hexagon in the city, not an absolute cutoff.
+
+| Grade | Percentile rank |
+| --- | --- |
+| A | Top 5% (95th and up) |
+| B | 80th-95th |
+| C | 40th-80th |
+| D | 15th-40th |
+| F | Bottom 15% |
+
+Grades are relative, not absolute: an A means better than 95% of Toronto, not "guaranteed good."
+
 ## Repository contents
 
 | File | What it is |
@@ -77,8 +91,6 @@ The model took three calibration rounds. The first version ranked empty suburban
 4. The reshaped census table ships in this repository (`neighbourhood_census_2021.csv`, derived from the open StatCan profiles); upload it to Databricks as `silver_census` with the neighbourhood code read as text so the leading zeros survive. The extraction itself is documented inside the pipeline notebook
 
 Note on the Databricks tier: Free Edition serverless does not permit custom JARs, so the pipeline reads Mongo through the Python driver rather than the Spark connector. At this data size (a few thousand documents) a single-node read is comfortable; on a standard cluster the connector is a drop-in swap for parallel reads.
-
-A deployment run on Azure Databricks is planned as a follow-up; this README will be updated with the deployment notes when it lands.
 
 ## Known limitations
 
