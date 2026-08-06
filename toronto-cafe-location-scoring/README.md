@@ -98,7 +98,7 @@ Stated rather than hidden, with the planned fix where one exists:
 
 1. **Counting stops at hexagon borders.** A cafe 20 metres into the next hexagon is invisible to its neighbour. Fix: count over each hexagon plus its ring of six neighbours (H3 grid_disk)
 2. **No daytime population.** Census counts where people sleep, so office district demand is understated. Fix: StatCan place-of-work data
-3. **Income is neighbourhood level.** All hexagons in a neighbourhood inherit one figure; within-neighbourhood variation is invisible. This is the finest granularity Statistics Canada publishes for these profiles
+3. **Density and income are neighbourhood level, not hexagon level.** Population per hexagon is the neighbourhood total divided evenly across its hexagons, and median income is inherited the same way, so every hexagon in a neighbourhood carries identical values for both. Across 5,747 hexagons that is only 156 distinct density values and 72 distinct income values. The practical consequence: two cafe-free hexagons in the same neighbourhood differ only in transit access, because the two cafe factors are also constant wherever there are no cafes. Neighbourhood profiles are the finest granularity Statistics Canada publishes; finer resolution would need dissemination-area data and a spatial crosswalk
 4. **"Independent" means no brand recorded in OpenStreetMap.** A reasonable inference, not a verified registry
 5. **No zoning layer.** The model can score parkland or industrial hexagons where a cafe cannot open
 6. **Cafes just outside the city limit are not counted** as competition for border hexagons
