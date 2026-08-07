@@ -6,7 +6,7 @@ An end-to-end data engineering pipeline that scores every location in Toronto as
 
 ## The output
 
-Open `toronto_cafe_map.html` in any browser (internet connection needed for the basemap). Features:
+**[Open the live interactive map](https://mbhatti48.github.io/Data-Project/toronto-cafe-location-scoring/toronto_cafe_map.html)**, or download `toronto_cafe_map.html` and open it in any browser. Either way an internet connection is needed, for the basemap tiles. Features:
 
 - All 5,747 hexagons coloured by score, red to green
 - Hover tooltip: score, grade, location type, cafe and transit counts
